@@ -48,26 +48,20 @@ class QueryEngine:
     
 
     def build_docs(self, file_path):
-        path = Path(file_path)
-        extension = path.suffix.lower()
+        extractor = ExtractText()
 
-        if extension == ".pdf": 
-            return self.build_pdf_doc(file_path)
-
-        else:                   
-            extractor = ExtractText()
-            txt = extractor.read_document(file_path=file_path)
-
-            doc = Document(text=txt, 
+        text = extractor.read_document(file_path=file_path)
+        doc = Document(text=text, 
                        metadata = {
                            "filename" : os.path.basename(file_path)
                        })
 
-            return [doc]
+        return [doc]
+        
         
         
     
-    def build_pdf_doc(self, file_path):
+"""    def build_pdf_doc(self, file_path):
         reader = PdfReader(file_path)
 
         docs = []
@@ -86,9 +80,14 @@ class QueryEngine:
                 docs.append(doc)
         
         return docs
+"""
+        
+        
+
+
+
+
     
-
-
 
 
 

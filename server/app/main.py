@@ -53,10 +53,6 @@ def clear_uploads():
             else: 
                 shutil.rmtree(item)
 
-def format_text(text):
-    text = text.replace('\\n', ' ')
-    text = ' '.join(text.split())
-    return text
 
 
 @app.post("/questions/", response_model=Response)
@@ -66,24 +62,12 @@ def get_response(query: Request):
 
     response = engine.query(query.query)
  
-    citations = []
-
 
     for node in response.source_nodes:
-        raw_text = node.node.text
-        formatted_text = format_text(raw_text)
-        citations.append(
-            {
-                "document_name" : node.node.metadata.get("filename", "Unknown"),
-                "text": formatted_text,
-                "page_number" : node.node.metadata.get("page_number", "N/A")
-            }
-        )
-    return {
-        "answer" : response.response,
-        "citation" : citations      
-    }
-
+        return{
+            "answer" : response.response,
+            "document_name": node.node.metadata.get("filename", "Unknown")
+        }
 
   
 

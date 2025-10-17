@@ -3,7 +3,7 @@ import { useState } from 'react';
 function QuestionAnswer({ onNext }) {
     const [question, setQuestion] = useState('');
     const [answer, setAnswer] = useState('');
-    const [citations, setCitations] = useState([]);
+    const [documentName, setDocumentName] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     const [hasAskedQuestion, setHasAskedQuestion] = useState(false);
 
@@ -13,7 +13,7 @@ function QuestionAnswer({ onNext }) {
 
         setIsLoading(true);
         setAnswer('');
-        setCitations([]);
+        setDocumentName('');
 
         try {
             const response = await fetch('http://127.0.0.1:8000/questions/', {
@@ -27,7 +27,7 @@ function QuestionAnswer({ onNext }) {
             if (response.ok) {
                 const data = await response.json();
                 setAnswer(data.answer);
-                setCitations(data.citation || []);
+                setDocumentName(data.document_name);
                 setHasAskedQuestion(true);
             } else {
                 setAnswer('Sorry, I couldn\'t process your question. Please try again.');
@@ -42,7 +42,7 @@ function QuestionAnswer({ onNext }) {
     const handleAskAnother = () => {
         setQuestion('');
         setAnswer('');
-        setCitations([]);
+        setDocumentName('');
         setHasAskedQuestion(false);
     };
 
@@ -90,19 +90,10 @@ function QuestionAnswer({ onNext }) {
                             <p>{answer}</p>
                         </div>
 
-                        {citations.length > 0 && (
-                            <div className="citations-section">
-                                <h4>Sources:</h4>
-                                <ul className="citations-list">
-                                    {citations.map((citation, index) => (
-                                        <li key={index} className="citation-item">
-                                            <span className="citation-text">
-                                                {citation.document_name}
-                                                {citation.page_number && `, Page ${citation.page_number}`}
-                                            </span>
-                                        </li>
-                                    ))}
-                                </ul>
+                        {documentName && (
+                            <div className="source-section">
+                                <h4>Source:</h4>
+                                <p className="source-name">{documentName}</p>
                             </div>
                         )}
 
