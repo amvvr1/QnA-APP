@@ -12,3 +12,4 @@ Pillow
 pytesseract
 pymupdf
 spire.doc
+llama-index-llms-openai
