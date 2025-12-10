@@ -8,7 +8,7 @@ function UploadedFilesList() {
     const fetchUploadedFiles = async () => {
         try {
             setLoading(true);
-            const response = await fetch('http://127.0.0.1:8000/uploaded-files/');
+            const response = await fetch('http:/qna-app-production.up.railway.app:8000/uploaded-files/');
             const data = await response.json();
 
             if (data.files) {
