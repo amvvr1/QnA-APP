@@ -16,7 +16,7 @@ function QuestionAnswer({ onNext }) {
         setDocumentName('');
 
         try {
-            const response = await fetch('http://127.0.0.1:8000/questions/', {
+            const response = await fetch('http://qna-app-production.up.railway.app:8000/questions/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
