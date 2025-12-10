@@ -25,7 +25,7 @@ function FileUpload({ onFilesUploaded, onNext }) {
 
         try {
             setUploadStatus('Uploading...');
-            const response = await fetch('http://qna-app-production.up.railway.app:8000/uploadmultiplefiles', {
+            const response = await fetch('https://stevie-unconciliable-hypostatically.ngrok-free.dev/uploadmultiplefiles', {
                 method: 'POST',
                 body: formData,
             });
