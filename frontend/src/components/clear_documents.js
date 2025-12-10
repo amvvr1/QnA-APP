@@ -9,7 +9,7 @@ function ClearDocuments({ onReset }) {
         setClearStatus('Clearing documents...');
 
         try {
-            const response = await fetch('http://127.0.0.1:8000/clear-uploads', {
+            const response = await fetch('http://qna-app-production.up.railway.app:8000/clear-uploads', {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',
