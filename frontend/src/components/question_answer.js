@@ -16,7 +16,7 @@ function QuestionAnswer({ onNext }) {
         setDocumentName('');
 
         try {
-            const response = await fetch('http://qna-app-production.up.railway.app:8000/questions/', {
+            const response = await fetch('https://stevie-unconciliable-hypostatically.ngrok-free.dev/questions/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
