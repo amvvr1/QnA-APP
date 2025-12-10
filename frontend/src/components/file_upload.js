@@ -25,7 +25,7 @@ function FileUpload({ onFilesUploaded, onNext }) {
 
         try {
             setUploadStatus('Uploading...');
-            const response = await fetch('http://127.0.0.1:8000/uploadmultiplefiles', {
+            const response = await fetch('http:/qna-app-production.up.railway.app:8000/uploadmultiplefiles', {
                 method: 'POST',
                 body: formData,
             });
