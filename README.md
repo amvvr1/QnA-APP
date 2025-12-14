@@ -4,7 +4,10 @@ An intelligent document analysis application that allows users to upload their d
 
 ## VIDEO DEMO
 
-![Demo Video](./demo/qna-app.demo.mp4)
+
+https://github.com/user-attachments/assets/f0d5a5c6-a9b3-4963-a545-84f34423bd57
+
+
 
 ## FEATURES
 
